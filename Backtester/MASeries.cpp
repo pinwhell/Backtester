@@ -64,7 +64,7 @@ void MASeries::Render()
 
     for (int i = 1; i < mSortedSerie.size(); i++)
     {
-        WGL4Render::getInstance()->DrawLine({ mParent->getCandlePositionX(mSortedSerie[i - 1].first), mSortedSerie[i - 1].second }, { mParent->getCandlePositionX(mSortedSerie[i].first), mSortedSerie[i].second}, Colors::cCyan, 1.f);
+        WGL4Render::getInstance()->DrawLine({ mParent->getCandlePositionX(mSortedSerie[i - 1].first), mSortedSerie[i - 1].second }, { mParent->getCandlePositionX(mSortedSerie[i].first), mSortedSerie[i].second}, Colors::cCyan,mParent->getAvgCandleBodySize() * 0.1f);
     }
 
     WGL4Render::getInstance()->PopModel();

@@ -74,6 +74,10 @@ public:
     glm::mat4 getScaleMatrix();
 
     glm::vec2 getCandleClosePosition(Candle* cand);
+
+    void MoveCamToCurrent();
+
+    float getAvgCandleBodySize();
 };
 
 class IChartEventListener {

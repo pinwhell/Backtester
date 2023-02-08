@@ -34,6 +34,8 @@ struct Candle {
     bool isBearish();
 
     CandleType getType();
+
+    float getBodySize();
 };
 
 #define SEC_TO_MILLIS(x) ((x) * 1000)
@@ -57,5 +59,6 @@ struct CandleGroup {
     std::vector<Candle*> getCandles(uint64_t from, uint64_t to);
     std::vector<Candle*> getCandlesWideRange(Candle* cand, size_t rangeCnt);
     std::vector<Candle*> getCandlesInverseRange(Candle* cand, size_t rangeCnt);
+    
 
 };

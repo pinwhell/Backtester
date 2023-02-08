@@ -9,8 +9,17 @@ public:
     std::vector<T> mPendingSubscribe;
     std::vector<T> mPendingUnsubscribe;
 
+    Listeners()
+    {
+        mSubscribers = std::vector<T>();
+    }
+
+
     bool IsSuscribed(T subscriber)
     {
+        if (mSubscribers.empty())
+            return false;
+
         return std::find(mSubscribers.begin(), mSubscribers.end(), subscriber) != std::end(mSubscribers);
     }
 

@@ -250,6 +250,28 @@ glm::vec2 ChartEmulator::getCandleClosePosition(Candle* cand)
     return glm::vec2(getCandlePositionX(cand), getCandleClosePositionY(cand));
 }
 
+void ChartEmulator::MoveCamToCurrent()
+{
+    WGL4Render::getInstance()->getCamera()->setPosition(getCandleClosePosition(getCurrentBar()) * -1.f);
+}
+
+float ChartEmulator::getAvgCandleBodySize()
+{
+    float avg = 0.f;
+    size_t i = 0;
+
+    for (auto curr : getCandlesInScene())
+    {
+        avg += curr->getBodySize();
+        i++;
+    }
+
+    if (i != 0)
+        avg /= (float)i;
+
+    return avg != 0.f ? avg : 1.f;
+}
+
 void IChartEventListener::setParent(ChartEmulator* parent)
 {
     mParent = parent;

@@ -176,3 +176,8 @@ std::vector<Candle*> CandleGroup::getCandlesInverseRange(Candle* cand, size_t ra
 
     return candRange;
 }
+
+float Candle::getBodySize()
+{
+    return std::abs(mOpen - mClose);
+}
