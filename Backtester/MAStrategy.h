@@ -6,6 +6,8 @@
 
 class ChartAgent;
 
+
+
 class MAStrategy : public IStrategy {
 public:
 
@@ -16,6 +18,15 @@ public:
 
     void Update() override;
     void PrintParameters() override;
+    virtual void onSignal(StrategySignalType sigType) override;
 
     void Render() override;
+};
+
+class InverseMAStrategy : public MAStrategy {
+
+public:
+    InverseMAStrategy(size_t mavgLen1, size_t mavgLen2);
+
+    void onSignal(StrategySignalType sigType) override;
 };

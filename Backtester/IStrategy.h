@@ -2,6 +2,11 @@
 
 class ChartAgent;
 
+enum class StrategySignalType {
+    LONG,
+    SHORT
+};
+
 class IStrategy {
 public:
     IStrategy();
@@ -31,4 +36,6 @@ public:
     void PrintResults();
 
     virtual void Render() {};
+
+    virtual void onSignal(StrategySignalType sigType) {};
 };

@@ -120,7 +120,7 @@ bool Program::Init()
 
 void Program::Run()
 {
-    std::unique_ptr<MAStrategyBacktest> maBacktest = std::make_unique<MAStrategyBacktest>();
+    std::unique_ptr<InverseMAStrategyBacktest> maBacktest = std::make_unique<InverseMAStrategyBacktest>();
 
     maBacktest->setChart(gChart);
 

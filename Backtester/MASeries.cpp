@@ -1,10 +1,15 @@
 #include "MASeries.h"
 #include "WGL4Render.h"
 
-MASeries::MASeries(size_t length)
+MASeries::MASeries(size_t length, const glm::vec4& color)
 {
     setLength(length);
+    setColor(color);
 }
+
+MASeries::MASeries(size_t length)
+    : MASeries(length, Colors::cCyan)
+{}
 
 void MASeries::Update() {
     float currAvg = 0.f;
@@ -64,8 +69,16 @@ void MASeries::Render()
 
     for (int i = 1; i < mSortedSerie.size(); i++)
     {
-        WGL4Render::getInstance()->DrawLine({ mParent->getCandlePositionX(mSortedSerie[i - 1].first), mSortedSerie[i - 1].second }, { mParent->getCandlePositionX(mSortedSerie[i].first), mSortedSerie[i].second}, Colors::cCyan,mParent->getAvgCandleBodySize() * 0.1f);
+        if (i - 1 > INVERSE_CANDLE_COUNT)
+            break;
+
+        WGL4Render::getInstance()->DrawLine({ mParent->getCandlePositionX(mSortedSerie[i - 1].first), mSortedSerie[i - 1].second }, { mParent->getCandlePositionX(mSortedSerie[i].first), mSortedSerie[i].second}, mColor,mParent->getAvgCandleBodySize() * 0.1f);
     }
 
     WGL4Render::getInstance()->PopModel();
+}
+
+void MASeries::setColor(const glm::vec4& color)
+{
+    mColor = color;
 }

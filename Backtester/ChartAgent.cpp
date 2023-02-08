@@ -63,8 +63,8 @@ void ChartAgent::Short(const std::string& tradeId, float TpPerc, float SlPerc)
 
     trade->setId(tradeId);
     trade->setPocket(this);
-    trade->setStopLoss(currPrice - currPrice * SlPerc);
-    trade->setTakeProfit(currPrice + currPrice * TpPerc);
+    trade->setStopLoss(currPrice + currPrice * SlPerc);
+    trade->setTakeProfit(currPrice - currPrice * TpPerc);
 
     mParent->SubscribeEventListener(trade.get());
 

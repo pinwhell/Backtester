@@ -138,8 +138,8 @@ void ITrade::Render()
     else
         endTradePosX = gChart->getCandlePositionX(gChart->getCurrentBar());
 
-    WGL4Render::getInstance()->DrawFilledBox({ startTradePosX , mEntryCandle->mClose }, endTradePosX - startTradePosX, -std::abs(mLossDelta), Colors::Alpha(Colors::cRed, 0.3f));
-    WGL4Render::getInstance()->DrawFilledBox({ startTradePosX , mEntryCandle->mClose }, endTradePosX - startTradePosX, std::abs(mWinDelta), Colors::Alpha(Colors::cCyan, 0.3f));
+    WGL4Render::getInstance()->DrawFilledBox({ startTradePosX , mEntryCandle->mClose }, endTradePosX - startTradePosX, -mLossDelta, Colors::Alpha(Colors::cRed, 0.3f));
+    WGL4Render::getInstance()->DrawFilledBox({ startTradePosX , mEntryCandle->mClose }, endTradePosX - startTradePosX, -mWinDelta, Colors::Alpha(Colors::cCyan, 0.3f));
 }
 
 Candle* ITrade::getEntryCandle()

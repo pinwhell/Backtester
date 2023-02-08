@@ -1,9 +1,14 @@
 #pragma once
 
 #include "ISeries.h"
+#include <Colors.h>
 
 class MASeries : public ISeries {
+private:
+    glm::vec4 mColor;
+
 public:
+    MASeries(size_t length, const glm::vec4& color = Colors::cCyan);
     MASeries(size_t length);
 
     size_t mLength;
@@ -17,4 +22,6 @@ public:
     void setLength(size_t length);
 
     void Render() override;
+
+    void setColor(const glm::vec4& color);
 };

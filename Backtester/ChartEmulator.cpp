@@ -217,7 +217,7 @@ void ChartEmulator::Render()
 
 std::vector<Candle*> ChartEmulator::getCandlesInScene()
 {
-    return mCandleGroup->getCandlesInverseRange(getCurrentBar(), 50);
+    return mCandleGroup->getCandlesInverseRange(getCurrentBar(), INVERSE_CANDLE_COUNT);
 }
 
 glm::mat4 ChartEmulator::getModelMatrix()
@@ -227,12 +227,14 @@ glm::mat4 ChartEmulator::getModelMatrix()
 
 void ChartEmulator::AddScale(const glm::vec2& addend)
 {
-    mScaleX += addend.x;
+    glm::vec2 scaledAddend = addend / getAvgCandleBodySize();
+
+    mScaleX += scaledAddend.x;
 
     if (mScaleX < 1.f)
         mScaleX = 1.0f;
 
-    mScaleY += addend.y;
+    mScaleY += scaledAddend.y;
 
     if (mScaleY < 1.f)
         mScaleY = 1.0f;

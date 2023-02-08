@@ -41,7 +41,7 @@ void IStrategy::onWin()
 
 float IStrategy::getScore()
 {
-    return getWinRate()  - mChartAgent->getAvgBarBetweenTrades() * 20; //  
+    return getWinRate(); //  
 }
 
 void IStrategy::setTpPerc(float perc)

@@ -8,6 +8,9 @@
 #include <deque>
 #include <glm/glm.hpp>
 
+// For now Hardcoded ( this need to become dinamyc )
+#define INVERSE_CANDLE_COUNT 75
+
 class IChartEventListener;
 class IBackTest;
 
